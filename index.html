@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Image</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <h1>Filter Images</h1>
+
+        <ul>
+            <li class="active">All Menu</li>
+            <li>Food</li>
+            <li>Car</li>
+            <li>House</li>
+            <li>Travel</li>
+        </ul>
+
+        <div class="product">
+            <img alt src="https://i.ibb.co/j4MPmBd/f1.jpg" data-filter="food">
+            <img alt src="https://i.ibb.co/3zkK4B1/f2.jpg" data-filter="food">
+            <img alt src="https://i.ibb.co/fCVXmpY/f3.jpg" data-filter="food">
+            <img alt src="https://i.ibb.co/fMt1H1K/f4.jpg" data-filter="food">
+
+            <img alt src="https://i.ibb.co/sjKS9BG/c1.jpg" data-filter="car">
+            <img alt src="https://i.ibb.co/zSZVpG5/c2.jpg" data-filter="car">
+            <img alt src="https://i.ibb.co/FB1N0Ny/c3.jpg" data-filter="car">
+            <img alt src="https://i.ibb.co/pvTtfmK/c4.jpg" data-filter="car">
+
+            <img alt src="https://i.ibb.co/GtDBhvx/h1.jpg" data-filter="house">
+            <img alt src="https://i.ibb.co/0XdM0pg/h2.jpg" data-filter="house">
+            <img alt src="https://i.ibb.co/XVM1tbw/h3.jpg" data-filter="house">
+            <img alt src="https://i.ibb.co/XVM1tbw/h4.jpg" data-filter="house">
+
+            <img alt src="https://i.ibb.co/TvTtSQg/t1.jpg" data-filter="travel">
+            <img alt src="https://i.ibb.co/nmtKySd/t2.jpg" data-filter="travel">
+            <img alt src="https://i.ibb.co/vjZq6pP/t3.jpg" data-filter="travel">
+            <img alt src="https://i.ibb.co/vjZq6pP/t4.jpg" data-filter="travel">
+        </div>
+    </section>
+
+    <script>
+        const liItem = document.querySelectorAll('ul li');
+        const imgItem = document.querySelectorAll('.product img');
+
+        liItem.forEach(li => {
+           li.onclick = function() {
+            //active
+            liItem.forEach(li => {
+                li.className = "";
+            })
+            li.className = "active";
+
+            //Filter
+            const value = li.textContent;
+            imgItem.forEach(img => {
+                img.style.display = 'none';
+                if (img.getAttribute('data-filter') == value.toLowerCase() || value == "All Menu") {
+                    img.style.display = 'block';
+                }
+            })
+           }
+        });
+    </script>
+</body>
+</html>
